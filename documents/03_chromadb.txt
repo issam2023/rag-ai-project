@@ -1,0 +1,3 @@
+ChromaDB is a vector database used in AI applications.
+It can store documents, embeddings, identifiers, and metadata.
+A RAG system can query ChromaDB to retrieve documents whose embeddings are similar to the user's query.

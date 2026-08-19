@@ -1,0 +1,4 @@
+Embeddings are numerical vector representations of text.
+Texts with similar meanings usually have embeddings that are close together in vector space.
+In a RAG system, documents and user queries can be converted into embeddings.
+Similarity search is then used to find the most relevant document chunks.

@@ -1,0 +1,4 @@
+Docker packages an application and its dependencies into a container.
+A Dockerfile describes how the container image should be built.
+Containers help an application run consistently across development and deployment environments.
+Docker is commonly used when deploying machine learning and RAG applications.

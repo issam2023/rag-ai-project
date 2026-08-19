@@ -1,0 +1,3 @@
+Langfuse provides observability for applications that use large language models.
+It can record queries, retrieved documents, model responses, latency, traces, and evaluations.
+In a RAG project, Langfuse can help monitor how retrieval and generation behave.

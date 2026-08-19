@@ -1,0 +1,4 @@
+Monitoring is important after deploying a machine learning system.
+Useful measurements include latency, errors, model responses, data quality, and changes in incoming data.
+Model drift occurs when production data or relationships change compared with the data used during training.
+Monitoring tools help detect these changes.
