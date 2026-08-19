@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import chromadb
 import os
+from pathlib import Path
 from google import genai
 
 app = FastAPI(title="Mini RAG with Gemini")
@@ -12,15 +13,20 @@ gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 chroma = chromadb.Client()
 collection = chroma.get_or_create_collection(name="demo_documents")
 
-documents = [
-    "Machine learning allows computers to learn patterns from data.",
-    "RAG retrieves relevant documents before generating an answer.",
-    "Render is a cloud platform used to deploy web applications.",
-    "Gemini is a large language model developed by Google.",
-    "Langfuse provides observability and tracing for LLM applications."
-]
+# Load real text files from documents/
+documents = []
+ids = []
 
-ids = ["doc1", "doc2", "doc3", "doc4", "doc5"]
+for file in Path("documents").glob("*.txt"):
+    content = file.read_text(encoding="utf-8")
+
+    # Simple chunking
+    chunks = [content[i:i+500] for i in range(0, len(content), 500)]
+
+    for number, chunk in enumerate(chunks):
+        if chunk.strip():
+            documents.append(chunk)
+            ids.append(f"{file.stem}_{number}")
 
 collection.add(
     documents=documents,
