@@ -88,117 +88,351 @@ from fastapi.responses import HTMLResponse
 def web_app():
     return """
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mini RAG AI - A.Masmi</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            color: #222;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mini RAG AI Assistant - A.Masmi</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #111827, #1e3a5f);
+        color: white;
+        padding: 34px 20px 42px;
+    }
+
+    .hero-inner {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .credit {
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 18px;
+        letter-spacing: 0.3px;
+    }
+
+    .hero h1 {
+        margin: 0;
+        font-size: 38px;
+    }
+
+    .hero p {
+        margin-top: 10px;
+        font-size: 17px;
+        color: #dbeafe;
+    }
+
+    .badges {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .badge {
+        background: rgba(255,255,255,0.12);
+        padding: 7px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+    }
+
+    .page {
+        max-width: 1000px;
+        margin: -24px auto 50px;
+        padding: 0 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
+
+    .card h2 {
+        margin-top: 0;
+        font-size: 25px;
+    }
+
+    .description {
+        color: #64748b;
+        margin-bottom: 22px;
+    }
+
+    .input-row {
+        display: flex;
+        gap: 10px;
+    }
+
+    input {
+        flex: 1;
+        padding: 15px 16px;
+        font-size: 16px;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #2563eb;
+    }
+
+    button {
+        border: 0;
+        border-radius: 10px;
+        padding: 14px 24px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #1e3a5f;
+        color: white;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        opacity: 0.88;
+    }
+
+    .examples {
+        margin-top: 18px;
+    }
+
+    .examples-title {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 8px;
+    }
+
+    .example-btn {
+        background: #eef2f7;
+        color: #334155;
+        padding: 8px 12px;
+        margin: 4px 4px 4px 0;
+        font-size: 13px;
+        border-radius: 18px;
+    }
+
+    .loading {
+        display: none;
+        margin-top: 20px;
+        padding: 12px;
+        color: #475569;
+    }
+
+    .answer-box {
+        display: none;
+        background: #eef9f1;
+        border-left: 5px solid #16a34a;
+    }
+
+    .answer-label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        color: #15803d;
+        font-weight: bold;
+    }
+
+    .answer-text {
+        margin-top: 12px;
+        font-size: 18px;
+        line-height: 1.55;
+    }
+
+    .context-box {
+        display: none;
+    }
+
+    details {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 16px;
+        background: #f8fafc;
+    }
+
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #334155;
+    }
+
+    .context-text {
+        margin-top: 14px;
+        line-height: 1.55;
+        color: #475569;
+    }
+
+    .footer {
+        text-align: center;
+        color: #64748b;
+        font-size: 14px;
+        padding: 18px;
+    }
+
+    .footer strong {
+        color: #334155;
+    }
+
+    @media (max-width: 700px) {
+        .hero h1 {
+            font-size: 30px;
         }
-        .header {
-            background: #172033;
-            color: white;
-            padding: 25px;
-            text-align: center;
+
+        .input-row {
+            flex-direction: column;
         }
-        .container {
-            max-width: 850px;
-            margin: 40px auto;
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,.10);
-        }
-        input {
-            width: 75%;
-            padding: 14px;
-            font-size: 16px;
-            border: 1px solid #bbb;
-            border-radius: 7px;
-        }
+
         button {
-            padding: 14px 25px;
-            font-size: 16px;
-            background: #172033;
-            color: white;
-            border: 0;
-            border-radius: 7px;
-            cursor: pointer;
+            width: 100%;
         }
-        button:hover {
-            opacity: .85;
-        }
-        .answer {
-            margin-top: 30px;
-            padding: 20px;
-            background: #eef7ee;
-            border-radius: 8px;
-            display: none;
-        }
-        .context {
-            margin-top: 15px;
-            padding: 20px;
-            background: #f3f3f3;
-            border-radius: 8px;
-            display: none;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 35px;
-            color: #666;
-            font-size: 14px;
-        }
-        #loading {
-            display: none;
-            margin-top: 20px;
-        }
-    </style>
+    }
+</style>
 </head>
 
 <body>
 
-<div class="header">
-    <h1>Mini RAG AI Assistant</h1>
-    <p>ChromaDB + Gemini + FastAPI</p>
-</div>
+<section class="hero">
+    <div class="hero-inner">
 
-<div class="container">
+        <div class="credit">
+            Developed by <strong>A.Masmi</strong> · Montreal, Canada · August 19, 2026
+        </div>
 
-    <h2>Ask the AI</h2>
+        <h1>Mini RAG AI Assistant</h1>
 
-    <p>Ask a question about the knowledge stored in the RAG system.</p>
+        <p>
+            A lightweight Retrieval-Augmented Generation application
+            for learning and experimenting with AI concepts.
+        </p>
 
-    <input id="question"
-           placeholder="Example: What is Gemini?"
-           onkeydown="if(event.key==='Enter') askQuestion()">
+        <div class="badges">
+            <span class="badge">ChromaDB</span>
+            <span class="badge">Gemini</span>
+            <span class="badge">FastAPI</span>
+            <span class="badge">Render</span>
+            <span class="badge">RAG</span>
+        </div>
 
-    <button onclick="askQuestion()">Ask</button>
-
-    <div id="loading">Thinking...</div>
-
-    <div id="answer" class="answer">
-        <h3>AI Answer</h3>
-        <p id="answerText"></p>
     </div>
+</section>
 
-    <div id="context" class="context">
-        <h3>Retrieved Context</h3>
-        <p id="contextText"></p>
-    </div>
+<main class="page">
+
+    <section class="card">
+
+        <h2>Ask the Knowledge Base</h2>
+
+        <p class="description">
+            Ask a question about RAG, embeddings, vector databases,
+            Gemini, Langfuse, Docker, FastAPI, or model monitoring.
+        </p>
+
+        <div class="input-row">
+
+            <input
+                id="question"
+                type="text"
+                placeholder="Example: Why are embeddings used in RAG?"
+                onkeydown="if(event.key === 'Enter') askQuestion()"
+            >
+
+            <button onclick="askQuestion()">
+                Ask AI
+            </button>
+
+        </div>
+
+        <div class="examples">
+
+            <div class="examples-title">
+                Try an example:
+            </div>
+
+            <button class="example-btn"
+                onclick="setQuestion('What is model drift?')">
+                Model drift
+            </button>
+
+            <button class="example-btn"
+                onclick="setQuestion('Why are embeddings used in RAG?')">
+                Embeddings
+            </button>
+
+            <button class="example-btn"
+                onclick="setQuestion('What is ChromaDB used for?')">
+                ChromaDB
+            </button>
+
+            <button class="example-btn"
+                onclick="setQuestion('What does Langfuse monitor?')">
+                Langfuse
+            </button>
+
+        </div>
+
+        <div id="loading" class="loading">
+            Searching the knowledge base and asking Gemini...
+        </div>
+
+    </section>
+
+    <section id="answerBox" class="card answer-box">
+
+        <div class="answer-label">
+            Grounded AI Answer
+        </div>
+
+        <div id="answerText" class="answer-text"></div>
+
+    </section>
+
+    <section id="contextBox" class="card context-box">
+
+        <details>
+
+            <summary>
+                View Retrieved Context
+            </summary>
+
+            <div id="contextText" class="context-text"></div>
+
+        </details>
+
+    </section>
 
     <div class="footer">
-        <strong>Developed by A.Masmi</strong><br>
-        Montreal, Canada<br>
-        August 19, 2026
+
+        <strong>Mini RAG AI Project</strong><br>
+
+        Developed by A.Masmi · Montreal, Canada<br>
+
+        ChromaDB + Gemini + FastAPI + Render
+
     </div>
 
-</div>
+</main>
 
 <script>
+
+function setQuestion(text) {
+    document.getElementById("question").value = text;
+    document.getElementById("question").focus();
+}
+
 async function askQuestion() {
 
     const q = document.getElementById("question").value.trim();
@@ -208,15 +442,21 @@ async function askQuestion() {
         return;
     }
 
-    document.getElementById("loading").style.display = "block";
-    document.getElementById("answer").style.display = "none";
-    document.getElementById("context").style.display = "none";
+    const loading = document.getElementById("loading");
+    const answerBox = document.getElementById("answerBox");
+    const contextBox = document.getElementById("contextBox");
+
+    loading.style.display = "block";
+    answerBox.style.display = "none";
+    contextBox.style.display = "none";
 
     try {
-        const response = await fetch("/query?q=" + encodeURIComponent(q));
+
+        const response =
+            await fetch("/query?q=" + encodeURIComponent(q));
 
         if (!response.ok) {
-            throw new Error("Request failed");
+            throw new Error("API request failed");
         }
 
         const data = await response.json();
@@ -227,19 +467,20 @@ async function askQuestion() {
         document.getElementById("contextText").textContent =
             data.retrieved_context;
 
-        document.getElementById("answer").style.display = "block";
-        document.getElementById("context").style.display = "block";
+        answerBox.style.display = "block";
+        contextBox.style.display = "block";
 
     } catch (error) {
 
         document.getElementById("answerText").textContent =
-            "Sorry, an error occurred.";
+            "The AI service could not answer the question. Please try again.";
 
-        document.getElementById("answer").style.display = "block";
+        answerBox.style.display = "block";
     }
 
-    document.getElementById("loading").style.display = "none";
+    loading.style.display = "none";
 }
+
 </script>
 
 </body>
