@@ -1,14 +1,16 @@
 from fastapi import FastAPI
 import chromadb
+import os
+from google import genai
 
-app = FastAPI(title="Mini RAG with ChromaDB")
+app = FastAPI(title="Mini RAG with Gemini")
 
-# Create an in-memory Chroma database
-client = chromadb.Client()
+# Gemini
+gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-collection = client.get_or_create_collection(
-    name="demo_documents"
-)
+# ChromaDB
+chroma = chromadb.Client()
+collection = chroma.get_or_create_collection(name="demo_documents")
 
 documents = [
     "Machine learning allows computers to learn patterns from data.",
@@ -20,7 +22,6 @@ documents = [
 
 ids = ["doc1", "doc2", "doc3", "doc4", "doc5"]
 
-# Chroma automatically creates embeddings
 collection.add(
     documents=documents,
     ids=ids
@@ -29,8 +30,8 @@ collection.add(
 @app.get("/")
 def home():
     return {
-        "message": "Mini RAG with ChromaDB is running",
-        "documents": len(documents)
+        "message": "Mini RAG with ChromaDB + Gemini is running",
+        "try": "/query?q=What is Gemini?"
     }
 
 @app.get("/health")
@@ -45,11 +46,28 @@ def query(q: str):
         n_results=1
     )
 
-    retrieved = results["documents"][0][0]
-    distance = results["distances"][0][0]
+    context = results["documents"][0][0]
+
+    prompt = f"""
+Answer the question using ONLY the context below.
+
+Context:
+{context}
+
+Question:
+{q}
+
+If the context does not contain the answer, say:
+I don't know based on the provided context.
+"""
+
+    response = gemini.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
+    )
 
     return {
         "question": q,
-        "retrieved_document": retrieved,
-        "distance": round(float(distance), 3)
+        "retrieved_context": context,
+        "gemini_answer": response.text
     }
