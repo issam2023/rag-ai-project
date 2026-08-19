@@ -75,3 +75,167 @@ I don't know based on the provided context.
         "retrieved_context": context,
         "gemini_answer": response.text
     }
+
+from fastapi.responses import HTMLResponse
+
+@app.get("/app", response_class=HTMLResponse)
+def web_app():
+    return """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini RAG AI - A.Masmi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            color: #222;
+        }
+        .header {
+            background: #172033;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.10);
+        }
+        input {
+            width: 75%;
+            padding: 14px;
+            font-size: 16px;
+            border: 1px solid #bbb;
+            border-radius: 7px;
+        }
+        button {
+            padding: 14px 25px;
+            font-size: 16px;
+            background: #172033;
+            color: white;
+            border: 0;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: .85;
+        }
+        .answer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #eef7ee;
+            border-radius: 8px;
+            display: none;
+        }
+        .context {
+            margin-top: 15px;
+            padding: 20px;
+            background: #f3f3f3;
+            border-radius: 8px;
+            display: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            color: #666;
+            font-size: 14px;
+        }
+        #loading {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Mini RAG AI Assistant</h1>
+    <p>ChromaDB + Gemini + FastAPI</p>
+</div>
+
+<div class="container">
+
+    <h2>Ask the AI</h2>
+
+    <p>Ask a question about the knowledge stored in the RAG system.</p>
+
+    <input id="question"
+           placeholder="Example: What is Gemini?"
+           onkeydown="if(event.key==='Enter') askQuestion()">
+
+    <button onclick="askQuestion()">Ask</button>
+
+    <div id="loading">Thinking...</div>
+
+    <div id="answer" class="answer">
+        <h3>AI Answer</h3>
+        <p id="answerText"></p>
+    </div>
+
+    <div id="context" class="context">
+        <h3>Retrieved Context</h3>
+        <p id="contextText"></p>
+    </div>
+
+    <div class="footer">
+        <strong>Developed by A.Masmi</strong><br>
+        Montreal, Canada<br>
+        August 19, 2026
+    </div>
+
+</div>
+
+<script>
+async function askQuestion() {
+
+    const q = document.getElementById("question").value.trim();
+
+    if (!q) {
+        alert("Please enter a question.");
+        return;
+    }
+
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("answer").style.display = "none";
+    document.getElementById("context").style.display = "none";
+
+    try {
+        const response = await fetch("/query?q=" + encodeURIComponent(q));
+
+        if (!response.ok) {
+            throw new Error("Request failed");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("answerText").textContent =
+            data.gemini_answer;
+
+        document.getElementById("contextText").textContent =
+            data.retrieved_context;
+
+        document.getElementById("answer").style.display = "block";
+        document.getElementById("context").style.display = "block";
+
+    } catch (error) {
+
+        document.getElementById("answerText").textContent =
+            "Sorry, an error occurred.";
+
+        document.getElementById("answer").style.display = "block";
+    }
+
+    document.getElementById("loading").style.display = "none";
+}
+</script>
+
+</body>
+</html>
+"""
