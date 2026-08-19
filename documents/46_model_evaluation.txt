@@ -1,3 +1,0 @@
-Title: 46 Model Evaluation
-
-Machine learning evaluation measures how well a model performs on unseen data. Classification may use accuracy, precision, recall, and F1-score, while regression may use MAE, RMSE, and R-squared.

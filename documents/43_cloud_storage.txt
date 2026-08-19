@@ -1,3 +1,0 @@
-Title: 43 Cloud Storage
-
-Google Cloud Storage is an object-storage service. RAG applications can use object storage to maintain source documents that are later processed, chunked, embedded, and indexed.

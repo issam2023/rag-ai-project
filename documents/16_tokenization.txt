@@ -1,3 +1,0 @@
-Title: 16 Tokenization
-
-Tokenization divides text into smaller units called tokens. Tokens may represent words, subwords, or characters. Modern transformer models frequently use subword tokenization to efficiently represent large vocabularies.

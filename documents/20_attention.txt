@@ -1,3 +1,0 @@
-Title: 20 Attention
-
-Attention allows a neural network to determine which parts of its input are most relevant when producing an output. Self-attention enables tokens in a sequence to incorporate information from other tokens.

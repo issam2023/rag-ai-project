@@ -1,3 +1,0 @@
-Title: 19 Transformers
-
-Transformers are neural-network architectures based heavily on attention mechanisms. They process relationships among tokens efficiently and form the foundation of many modern language models.

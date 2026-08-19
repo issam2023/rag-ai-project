@@ -1,3 +1,0 @@
-Title: 38 Docker
-
-Docker packages an application and its dependencies into containers. Containers improve portability because the application can run in a consistent environment across development and deployment systems.

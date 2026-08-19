@@ -1,3 +1,0 @@
-Title: 49 Model Drift
-
-Model drift occurs when the statistical relationships encountered after deployment change from those seen during training. Monitoring helps teams detect performance degradation and determine whether investigation or retraining is necessary.

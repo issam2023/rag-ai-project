@@ -1,3 +1,0 @@
-Title: 34 Grounded Generation
-
-Grounded generation instructs a language model to answer using supplied evidence or context. Grounding can reduce unsupported responses because the model is expected to base its answer on retrieved information.

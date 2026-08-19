@@ -1,3 +1,0 @@
-Title: 36 Fastapi
-
-FastAPI is a Python framework for building web APIs. It supports type hints, automatic API documentation, asynchronous programming, and REST endpoints. FastAPI can expose a RAG pipeline through endpoints such as /query and /health.

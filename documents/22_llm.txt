@@ -1,3 +1,0 @@
-Title: 22 Llm
-
-A large language model is trained on large quantities of text to learn linguistic patterns and relationships. LLMs can perform tasks such as question answering, summarization, generation, classification, and reasoning.

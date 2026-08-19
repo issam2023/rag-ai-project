@@ -1,3 +1,0 @@
-Title: 23 Gemini
-
-Gemini is a family of artificial intelligence models developed by Google. Gemini models can be accessed programmatically through APIs and can be integrated into applications such as Retrieval-Augmented Generation systems.

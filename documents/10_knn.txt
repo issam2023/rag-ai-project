@@ -1,3 +1,0 @@
-Title: 10 Knn
-
-K-Nearest Neighbors predicts an observation using nearby training examples. In classification, the majority class among the nearest neighbors is commonly selected. Feature scaling is particularly important when using distance-based algorithms such as KNN.

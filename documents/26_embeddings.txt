@@ -1,3 +1,0 @@
-Title: 26 Embeddings
-
-Embeddings are dense numerical vector representations of information. In RAG systems, document chunks and user queries can be represented as embeddings so that semantically similar content can be identified using similarity search.

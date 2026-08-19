@@ -1,3 +1,0 @@
-Title: 42 Artifact Registry
-
-Google Artifact Registry stores software artifacts such as Docker container images. A deployment workflow can build an application image, push it to Artifact Registry, and deploy that image to Cloud Run.

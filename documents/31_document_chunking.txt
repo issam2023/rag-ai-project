@@ -1,3 +1,0 @@
-Title: 31 Document Chunking
-
-Document chunking divides large documents into smaller sections before embedding them. Appropriate chunk sizes help retrieval systems locate focused and relevant information instead of retrieving an entire large document.

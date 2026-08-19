@@ -1,3 +1,0 @@
-Title: 25 Rag Pipeline
-
-A typical RAG pipeline accepts a user question, converts the question into an embedding, searches a vector database, retrieves relevant document chunks, constructs a prompt containing the retrieved context, and asks a language model to generate a grounded answer.

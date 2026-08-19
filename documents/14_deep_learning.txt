@@ -1,3 +1,0 @@
-Title: 14 Deep Learning
-
-Deep learning uses neural networks containing multiple layers. Deep learning has achieved strong results in computer vision, natural language processing, speech recognition, and generative artificial intelligence.

@@ -1,3 +1,0 @@
-Title: 13 Neural Networks
-
-Artificial neural networks contain interconnected layers of computational units called neurons. Neural networks learn complex nonlinear relationships from data and form the foundation of modern deep learning.

@@ -1,3 +1,0 @@
-Title: 45 Observability
-
-Observability helps developers understand how an application behaves internally. For AI applications, useful signals can include request traces, latency, errors, retrieved documents, model responses, and evaluation scores.

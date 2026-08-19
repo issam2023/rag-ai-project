@@ -1,3 +1,0 @@
-Title: 39 Render
-
-Render is a cloud application platform capable of hosting web services. A Python FastAPI application stored in GitHub can be built and deployed as a Render web service and exposed through a public URL.

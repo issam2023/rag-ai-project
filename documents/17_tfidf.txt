@@ -1,3 +1,0 @@
-Title: 17 Tfidf
-
-TF-IDF represents documents using weighted term frequencies. Terms that occur frequently in one document but less frequently across the overall document collection receive higher importance. TF-IDF is commonly used for information retrieval and text classification.

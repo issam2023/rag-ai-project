@@ -1,3 +1,0 @@
-Title: 44 Langfuse
-
-Langfuse is an observability and evaluation platform for applications using large language models. It can record traces, prompts, responses, latency, and other information useful for analyzing RAG systems.
