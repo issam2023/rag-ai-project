@@ -1,0 +1,3 @@
+Title: 18 Word Embeddings
+
+Word embeddings represent words as dense numerical vectors. Words with similar meanings tend to have vectors located near each other in vector space. Embeddings allow machine learning systems to capture semantic relationships.

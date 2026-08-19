@@ -1,0 +1,3 @@
+Title: 11 Kmeans
+
+K-Means is an unsupervised clustering algorithm. It divides observations into K clusters by repeatedly assigning points to the nearest centroid and updating the centroids. The number of clusters must normally be selected before training.

@@ -1,0 +1,3 @@
+Title: 50 Mlops
+
+MLOps applies engineering and operational practices to machine learning systems. It includes reproducible training, version control, deployment, monitoring, testing, model management, and automated workflows.

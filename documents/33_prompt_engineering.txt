@@ -1,0 +1,3 @@
+Title: 33 Prompt Engineering
+
+Prompt engineering involves designing instructions and context supplied to a language model. In RAG, prompts should clearly separate system instructions, retrieved context, and the user's question.

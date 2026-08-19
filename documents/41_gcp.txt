@@ -1,0 +1,3 @@
+Title: 41 Gcp
+
+Google Cloud Platform provides cloud computing services including compute, storage, databases, networking, machine learning, and container deployment. Services relevant to AI projects include Cloud Run, Cloud Storage, and Artifact Registry.

@@ -1,0 +1,3 @@
+Title: 08 Random Forest
+
+Random Forest is an ensemble learning algorithm that combines many decision trees. Each tree is trained using a random subset of observations and features. Combining many trees generally improves robustness and reduces overfitting.

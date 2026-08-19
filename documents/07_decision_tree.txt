@@ -1,0 +1,3 @@
+Title: 07 Decision Tree
+
+A decision tree makes predictions by recursively splitting data according to feature values. Decision trees are easy to interpret but can overfit training data. Techniques such as pruning and limiting tree depth can reduce overfitting.

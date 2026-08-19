@@ -1,0 +1,3 @@
+Title: 40 Cloud Run
+
+Google Cloud Run is a managed platform for running containerized applications. Developers deploy container images while the platform handles infrastructure management and scaling.

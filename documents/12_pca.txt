@@ -1,0 +1,3 @@
+Title: 12 Pca
+
+Principal Component Analysis is a dimensionality-reduction technique. PCA transforms correlated features into a smaller set of uncorrelated principal components while attempting to preserve as much variance as possible.

@@ -1,0 +1,3 @@
+Title: 21 Bert
+
+BERT is a transformer-based language model architecture designed to learn bidirectional contextual representations. BERT can be adapted to tasks including classification, named-entity recognition, and question answering.

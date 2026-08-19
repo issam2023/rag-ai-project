@@ -1,0 +1,3 @@
+Title: 30 Cosine Similarity
+
+Cosine similarity measures the similarity between vectors by comparing their orientation. It is frequently used with text embeddings because vectors pointing in similar directions often represent semantically related content.

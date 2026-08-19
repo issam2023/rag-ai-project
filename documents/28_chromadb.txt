@@ -1,0 +1,3 @@
+Title: 28 Chromadb
+
+ChromaDB is a vector database commonly used in AI applications. It can store documents, metadata, and embeddings and perform similarity searches. ChromaDB can be used as the retrieval component of a RAG pipeline.

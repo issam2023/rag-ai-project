@@ -1,0 +1,3 @@
+Title: 47 Rag Evaluation
+
+RAG evaluation examines both retrieval and generation. Retrieval evaluation asks whether relevant documents were found, while generation evaluation considers whether the final answer is correct, relevant, and grounded in retrieved context.

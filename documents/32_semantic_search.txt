@@ -1,0 +1,3 @@
+Title: 32 Semantic Search
+
+Semantic search attempts to retrieve information based on meaning rather than exact keyword matches. Embedding models convert queries and documents into vectors, allowing related concepts to be matched even when different words are used.

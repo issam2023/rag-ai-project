@@ -1,0 +1,3 @@
+Title: 03 Unsupervised Learning
+
+Unsupervised learning analyzes data without labeled target values. Its goal is to discover hidden structures or patterns. Common techniques include clustering, dimensionality reduction, and anomaly detection. K-Means is a widely used clustering algorithm.

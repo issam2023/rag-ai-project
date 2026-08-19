@@ -1,0 +1,3 @@
+Title: 09 Svm
+
+Support Vector Machines are supervised learning algorithms used primarily for classification. An SVM searches for a decision boundary that maximizes the margin between classes. Kernel functions allow SVMs to model nonlinear relationships.

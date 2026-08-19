@@ -1,0 +1,3 @@
+Title: 27 Vector Database
+
+A vector database stores and searches high-dimensional vectors. Vector databases are useful for semantic search because they can efficiently identify embeddings that are close to a query embedding.

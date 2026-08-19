@@ -1,0 +1,3 @@
+Title: 37 Rest Api
+
+A REST API allows software systems to communicate using HTTP requests. Common HTTP methods include GET, POST, PUT, and DELETE. An AI service can expose prediction or query functionality through REST endpoints.

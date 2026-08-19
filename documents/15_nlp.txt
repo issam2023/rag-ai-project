@@ -1,0 +1,3 @@
+Title: 15 Nlp
+
+Natural Language Processing enables computers to process and analyze human language. NLP applications include sentiment analysis, translation, question answering, summarization, information extraction, and conversational assistants.

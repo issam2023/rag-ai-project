@@ -1,0 +1,3 @@
+Title: 02 Supervised Learning
+
+Supervised learning trains a model using input examples paired with known target values. Classification predicts categories, while regression predicts numerical values. Typical supervised algorithms include logistic regression, decision trees, random forests, support vector machines, and neural networks.

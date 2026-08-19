@@ -1,0 +1,3 @@
+Title: 05 Regression
+
+Regression predicts continuous numerical values. Examples include house-price prediction, sales forecasting, temperature prediction, and insurance-cost estimation. Common metrics include MAE, MSE, RMSE, and R-squared.

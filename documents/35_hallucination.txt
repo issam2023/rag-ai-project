@@ -1,0 +1,3 @@
+Title: 35 Hallucination
+
+In generative AI, hallucination describes output that appears plausible but is unsupported or incorrect. RAG can reduce hallucination by providing relevant external context, although retrieval and generation must still be evaluated.
