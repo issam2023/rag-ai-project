@@ -31,6 +31,10 @@ collection.add(
 def home():
     return {
         "message": "Mini RAG with ChromaDB + Gemini is running",
+        "project": "Mini RAG AI Project",
+        "developed_by": "A.Masmi",
+        "location": "Montreal, Canada",
+        "date": "August 19, 2026",
         "try": "/query?q=What is Gemini?"
     }
 
