@@ -1,23 +1,36 @@
 from fastapi import FastAPI
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+import chromadb
 
-app = FastAPI(title="Mini RAG Demo")
+app = FastAPI(title="Mini RAG with ChromaDB")
+
+# Create an in-memory Chroma database
+client = chromadb.Client()
+
+collection = client.get_or_create_collection(
+    name="demo_documents"
+)
 
 documents = [
     "Machine learning allows computers to learn patterns from data.",
     "RAG retrieves relevant documents before generating an answer.",
-    "Render is a cloud platform used to deploy web applications."
+    "Render is a cloud platform used to deploy web applications.",
+    "Gemini is a large language model developed by Google.",
+    "Langfuse provides observability and tracing for LLM applications."
 ]
 
-vectorizer = TfidfVectorizer()
-doc_vectors = vectorizer.fit_transform(documents)
+ids = ["doc1", "doc2", "doc3", "doc4", "doc5"]
+
+# Chroma automatically creates embeddings
+collection.add(
+    documents=documents,
+    ids=ids
+)
 
 @app.get("/")
 def home():
     return {
-        "message": "Mini RAG is running",
-        "try": "/query?q=What is RAG?"
+        "message": "Mini RAG with ChromaDB is running",
+        "documents": len(documents)
     }
 
 @app.get("/health")
@@ -26,13 +39,17 @@ def health():
 
 @app.get("/query")
 def query(q: str):
-    query_vector = vectorizer.transform([q])
-    scores = cosine_similarity(query_vector, doc_vectors)[0]
 
-    best_index = scores.argmax()
+    results = collection.query(
+        query_texts=[q],
+        n_results=1
+    )
+
+    retrieved = results["documents"][0][0]
+    distance = results["distances"][0][0]
 
     return {
         "question": q,
-        "retrieved_document": documents[best_index],
-        "similarity_score": round(float(scores[best_index]), 3)
+        "retrieved_document": retrieved,
+        "distance": round(float(distance), 3)
     }
